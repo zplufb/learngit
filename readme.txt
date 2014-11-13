@@ -1,1 +1,1 @@
-today is a cloudy day
+git is free software
