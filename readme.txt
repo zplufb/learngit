@@ -1,3 +1,5 @@
-Creating a new branch is quick 
+a new branch is quick 
 Creating a new branch is quick & simple 
 test for git merge --no-ff
+diff readme.txt
+master dev
