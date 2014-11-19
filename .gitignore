@@ -1,3 +1,6 @@
 #ignore lear-1 and syn zplufb.txt
 /learngit-1/
 !/learngit-1/zplufb.txt
+
+#don't ignore tmp fd
+!tmp/
