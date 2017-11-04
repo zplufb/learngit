@@ -199,13 +199,11 @@ git add 那两个文件，用git status查看如下：
 
 一旦提交后，如果你对工作区文件不做任何修改，此时工作区就是&quot;干净&quot;的。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image025.jpg)
-
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image025.png)
 
 版本库就变成如下：
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image026.png)
-
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image026.jpg)
 
 ## 3.4管理和撤销修改
 
