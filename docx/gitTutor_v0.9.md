@@ -39,11 +39,11 @@ $ git config --global user.email &quot;email@example.com&quot;
 
 首先，选择一个合适的地方，创建一个空目录：
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image001.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image001.png)
 
 第二步，通过git init命令把这个目录变成Git可以管理的仓库：
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image003.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image002.png)
 
 # 三、Git基本操作
 
@@ -89,13 +89,13 @@ git status命令可以让我们时刻掌握仓库当前的状态，上面的命�
 
 如果你忘记了修改了什么内容，可以用git diff这个命令查看
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image006.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image006.png)
 
 知道对readme.txt文件修改了什么。那就提交到仓库。还是分两步。
 
 第一步是git add:
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image007.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image007.png)
 
 ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image008.png)
 
@@ -127,43 +127,45 @@ Git is free software distributed under the GPL.
 
 如果觉得log信息输出太多。可以用git log –-pretty=oneline.
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image010.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image012.png)
 
 此时我们想回到上一个版本，我们可以用git reset --hard HEAD^，如果是上上版本就是HEAD^^,如果上上30个版本，HEAD~30就可以了。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image010.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image013.png)
 
 我们可以查看下readme.txt 是否回到上一个版本。
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image010.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image014.png)
 
 此时我又想回到 &quot;append GPL&quot; 那个版本,怎么办？
 
 还好我们知道它的commit\_id。所以可以用命令git reset –hard f12698
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image010.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image015.png)
 
 我们再次看下readme.txt。果然又回到&quot;append GPL&quot;那个版本了
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image010.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image016.png)
 
 但是如果我们返回到&quot;add distributed&quot;那个版本，关了电脑回家了。第二天，又想回到之前最新的版本，查下git log 如下：
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image010.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image017.png)
 
 找不到&quot;append GPL&quot;这个版本的ID了，怎么办，请用git reflog 命令
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image010.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image018.png)
+
 就可以看到&quot;append GPL&quot;提交的ID是f126989。
 
 git  reset –hard 含义如下：
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image010.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image019.png)
 工作区（Working Directory）：就是你在电脑里能看到的目录，比如我的studygit文件夹就是一个工作区：
 
 版本库（Repository）：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
+
 前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的：
 
 第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；
@@ -174,35 +176,35 @@ git  reset –hard 含义如下：
 
 我们新建一文件LICENSE，修改readme.txt 查看下状态
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
 
 说明readme.txt被修改，LICENSE文件未被跟踪。
 
 此时状态如下图：
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
 
 
 git add 那两个文件，用git status查看如下：
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
 
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
 
 我们执行git commit 一次性提交暂存区（stage）的所有修改到分支。
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
 
 
 一旦提交后，如果你对工作区文件不做任何修改，此时工作区就是&quot;干净&quot;的。
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
 
 
 版本库就变成如下：
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
 
 
 ## 3.4管理和撤销修改
@@ -213,11 +215,11 @@ git add 那两个文件，用git status查看如下：
 
 当你修改工作区的readme.txt 但是还没有提交，你想回到没修改前的状态。当然你可以打开文件，慢慢删，但是手动操作，总让人感觉不舒服。如下图所示，你可以发现，Git会告诉你，git checkout -- file可以丢弃工作区的修改：
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
 
 当你修改工作区的readme.txt，并且git add，但是还没有commit。那就用git reset HEAD readme.txt。 可以把暂存区的修改撤销掉（unstage）,重新放回工作区。
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image020.png)
 
 
 小结：
@@ -234,15 +236,15 @@ git add 那两个文件，用git status查看如下：
 
 我们新添加一个test.txt文件并提交
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 用rm  test.txt 删除文件后，Git 知道用户删除了文件，因此，工作区和版本库不一致了。用git status 看下
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 若要从版本库中删除文件，需要用git rm删掉文件，再提交。这样工作区和版本库就一致了。
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 若刚才的git rm是删错了文件，版本库还有该文件。可以用git checkout -- &lt;file&gt; 撤销刚才的删除操作。
 
@@ -254,30 +256,30 @@ git checkout -- &lt;file&gt;其实是用版本库里的版本替换工作区的�
 
 $ ssh-keygen -t  rsa  -C   [youremail@example.com](mailto:youremail@example.com)  生成密钥对。用户主目录下会生成.ssh文件夹。里面id\_rsa是私钥，id\_rsa.pub是公钥，这个要告诉服务器。例如：GitHub网站，在个人设置里添加ssh key
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 ## 4.1添加远程仓库
 
 这里是以GitHub作为例子。在GitHub新建一个空的仓库，如下
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 新建好了，如下：
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 根据提示，用git remote add origin [git@github.com:zlufb/studygit.git](mailto:git@github.com:zlufb/studygit.git) 关联远程仓库。
 
 然后再git push –u origin master命令，首次push时，待参数-u(意思是set-upstream for git pull/status)，后面push就不需要了。
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 ## 4.2从远程仓库克隆
 
 假定，我要clone 远程仓库。 [那么用](mailto:%E9%82%A3%E4%B9%88%E7%94%A8git@github.com:yourname/your_project.git) [git@github.com:yourname/your\_project.git](mailto:%E9%82%A3%E4%B9%88%E7%94%A8git@github.com:yourname/your_project.git) (ssh协议)
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 这样就在你当前目录下，clone了远程仓库。
 
@@ -320,7 +322,7 @@ git checkout –b dev
 git branch dev
 
 git checkout dev
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 
 我们在dev分支上修改readme.txt文件，添加内容如下：
@@ -329,21 +331,21 @@ Creating a new branch is quick.
 
      我们git add,git commit。
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image040.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image040.png)
 
 此时查看readme.txt
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 切换到master主分支上。在查看readme.txt如下：
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 发现readme.txt并没有变化。
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 那合并dev到master上。用git merge dev
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 此时master主分支上readme就和dev一致了。
 
@@ -351,32 +353,32 @@ Creating a new branch is quick.
 
 Git branch –d dev
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 ## 5.2冲突处理
 
 当dev和master分支都同时修改了readme.txt且都提交了。合并dev到master时就会发生冲突如下：
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 Git告诉我们，readme.txt文件存在冲突，必须手动解决冲突后再提交。查看下;
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)AwP4EqB/7+xALIAABCNxB4H/5MCkKM4rKRAAAAABJRU5ErkJggg==)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)AwP4EqB/7+xALIAABCNxB4H/5MCkKM4rKRAAAAABJRU5ErkJggg==)
 
 此时readme.txt 内容如下：
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 我们手动修改后，在add，commit就可以了。
 
 我们用git log –graph –pretty=oneline –abbrev-commit查看下log.
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 
 ## 5.3分支管理策略
 
 之前我们是直接使用git merge dev,默认是使用了fast-forward模式，这种合并下，删除分支后，会丢掉分支信息。
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
 
 我们合并时用git merge –-no-ff dev。则会保留分支信息。
 
@@ -392,7 +394,7 @@ Git告诉我们，readme.txt文件存在冲突，必须手动解决冲突后再�
 
 所以，团队合作的分支看起来就像这样：
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
 
 ## 5.4 Bug分支
 
@@ -402,47 +404,47 @@ Git stash 命令就是可以保存你现在的工作空间。
 
 例子如下：newfile.py还没有被提交，readme.txt还没加到stage，此时又要修复一个bug任务。
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
 
 此时用git stash命令。
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
 
 当你建立分支，修复完bug，切换到master,并完成合并。此时你要开始之前的工作，那用git stash list 来查看
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
 
 此时可以用git stash apply 恢复，stash内容并不删除，得用命令git stash drop来删除。
 
 或者用git stash pop,恢复同时，并同时把stash内容删除了。
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
 
 当多次stash，恢复时，先用git stash list 查看，然后恢复指定的stash。
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
 
 ## 5.5 Feature分支
 
 开发一个新功能的分支，并且你提交。现在要放弃这个新功能分支的开发，提示还没合并呢
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
 
 提示我们用git branch –D feature来删除。
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
 
 ## 5.6 多人协助
 
 •查看远程库信息，使用git remote -v；
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
 
 •本地新建的分支如果不推送到远程，对其他人就是不可见的；
 
 •从本地推送分支，使用git push origin branch-name.
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image060.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image060.png)
 
 如果推送失败，先用git pull抓取远程的新提交；
 
@@ -480,30 +482,30 @@ Git stash 命令就是可以保存你现在的工作空间。
 
 不同方式新建几个tag
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
 查看v0.1
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
 
 Tag 可以创建，就可以删除。
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
 
 推送某个标签(例如：v1.0)用git push origin v1.0。
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
 
 或者一次性把标签全部（未推送到）推送到远程仓库
 
 Git push origin –-tags
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
  
 当你需要修改之前的tag ，例如v0.9。 ![](data:image/*;base64,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)
 
 我们可以删除本地的v0.9，然而远程仓库还在。那我们需要用git push origin :refs/tags/v0.9
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
  
 # 七、自定义Git
 
@@ -515,15 +517,15 @@ Git push origin –-tags
 
 那就忽略它。
 
-  ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
  
 首先建一个.gitignore文件。在里面写上规则即可。支持正则表达式。
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
  
 但是，我们要把.gitgnore文件加入到版本库中。
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
  
 ## 7.2 配置别名
 
@@ -547,7 +549,7 @@ $  git config --global alias.lg
 
 &quot;log        --color        --graph        --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset%s%Cgreen(%cr)%C(boldblue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;
 
- ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image071.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image071.png)
  
 如果提示fatal: bad color value &#39;boldblue&#39; for variable &#39;--pretty format&#39; ，则&#39;boldblue&#39;改成blue
 
