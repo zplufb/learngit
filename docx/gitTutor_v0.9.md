@@ -346,6 +346,7 @@ Creating a new branch is quick.
 ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image040.png)
 
 那合并dev到master上。用git merge dev
+
 ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image041.png)
 
 此时master主分支上readme就和dev一致了。
@@ -361,25 +362,26 @@ Git branch –d dev
 当dev和master分支都同时修改了readme.txt且都提交了。合并dev到master时就会发生冲突如下：
 
 ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image043.png)
+
 Git告诉我们，readme.txt文件存在冲突，必须手动解决冲突后再提交。查看下;
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)AwP4EqB/7+xALIAABCNxB4H/5MCkKM4rKRAAAAABJRU5ErkJggg==)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image044.png)
 
 此时readme.txt 内容如下：
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image044.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image045.png)
 
 我们手动修改后，在add，commit就可以了。
 
 我们用git log –graph –pretty=oneline –abbrev-commit查看下log.
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image045.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image046.png)
 
 ## 5.3分支管理策略
 
 之前我们是直接使用git merge dev,默认是使用了fast-forward模式，这种合并下，删除分支后，会丢掉分支信息。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image046.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image041.png)
 
 我们合并时用git merge –-no-ff dev。则会保留分支信息。
 
