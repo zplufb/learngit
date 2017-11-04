@@ -1,0 +1,2 @@
+i am a test
+ok now use checkout -- <file>
