@@ -5,3 +5,4 @@ diff readme.txt
 now git stash
 
 
+another person devlop in brach dev
