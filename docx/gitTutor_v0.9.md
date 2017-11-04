@@ -322,8 +322,8 @@ git checkout –b dev
 git branch dev
 
 git checkout dev
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image036.png)
 
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image036.png)
 
 我们在dev分支上修改readme.txt文件，添加内容如下：
 
@@ -340,6 +340,7 @@ Creating a new branch is quick.
 切换到master主分支上。在查看readme.txt如下：
 
 ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image039.png)
+
 发现readme.txt并没有变化。
 
 ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image040.png)
@@ -359,26 +360,26 @@ Git branch –d dev
 
 当dev和master分支都同时修改了readme.txt且都提交了。合并dev到master时就会发生冲突如下：
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image046.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image043.png)
 Git告诉我们，readme.txt文件存在冲突，必须手动解决冲突后再提交。查看下;
 
 ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)AwP4EqB/7+xALIAABCNxB4H/5MCkKM4rKRAAAAABJRU5ErkJggg==)
 
 此时readme.txt 内容如下：
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image047.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image044.png)
 
 我们手动修改后，在add，commit就可以了。
 
 我们用git log –graph –pretty=oneline –abbrev-commit查看下log.
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image048.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image045.png)
 
 ## 5.3分支管理策略
 
 之前我们是直接使用git merge dev,默认是使用了fast-forward模式，这种合并下，删除分支后，会丢掉分支信息。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image049.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image046.png)
 
 我们合并时用git merge –-no-ff dev。则会保留分支信息。
 
@@ -394,7 +395,7 @@ Git告诉我们，readme.txt文件存在冲突，必须手动解决冲突后再�
 
 所以，团队合作的分支看起来就像这样：
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image047.png)
 
 ## 5.4 Bug分支
 
@@ -404,11 +405,11 @@ Git stash 命令就是可以保存你现在的工作空间。
 
 例子如下：newfile.py还没有被提交，readme.txt还没加到stage，此时又要修复一个bug任务。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image051.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image048.png)
 
 此时用git stash命令。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image049.png)
 
 当你建立分支，修复完bug，切换到master,并完成合并。此时你要开始之前的工作，那用git stash list 来查看
 
@@ -418,33 +419,33 @@ Git stash 命令就是可以保存你现在的工作空间。
 
 或者用git stash pop,恢复同时，并同时把stash内容删除了。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image051.png)
 
 当多次stash，恢复时，先用git stash list 查看，然后恢复指定的stash。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image052.png)
 
 ## 5.5 Feature分支
 
 开发一个新功能的分支，并且你提交。现在要放弃这个新功能分支的开发，提示还没合并呢
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image053.png)
 
 提示我们用git branch –D feature来删除。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image054.png)
 
 ## 5.6 多人协助
 
 •查看远程库信息，使用git remote -v；
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image050.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image055.png)
 
 •本地新建的分支如果不推送到远程，对其他人就是不可见的；
 
 •从本地推送分支，使用git push origin branch-name.
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image060.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image056.png)
 
 如果推送失败，先用git pull抓取远程的新提交；
 
@@ -482,18 +483,19 @@ Git stash 命令就是可以保存你现在的工作空间。
 
 不同方式新建几个tag
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image057.png)
+
 查看v0.1
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image058.png)
 
 Tag 可以创建，就可以删除。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image059.png)
 
 推送某个标签(例如：v1.0)用git push origin v1.0。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image060.png)
 
 或者一次性把标签全部（未推送到）推送到远程仓库
 
@@ -501,11 +503,13 @@ Git push origin –-tags
 
 ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
  
-当你需要修改之前的tag ，例如v0.9。 ![](data:image/*;base64,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)
+当你需要修改之前的tag ，例如v0.9。 
+
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image062.png)
 
 我们可以删除本地的v0.9，然而远程仓库还在。那我们需要用git push origin :refs/tags/v0.9
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image063.png)
  
 # 七、自定义Git
 
@@ -517,15 +521,15 @@ Git push origin –-tags
 
 那就忽略它。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image064.png)
  
 首先建一个.gitignore文件。在里面写上规则即可。支持正则表达式。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image065.png)
  
 但是，我们要把.gitgnore文件加入到版本库中。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image061.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image066.png)
  
 ## 7.2 配置别名
 
@@ -549,7 +553,7 @@ $  git config --global alias.lg
 
 &quot;log        --color        --graph        --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset%s%Cgreen(%cr)%C(boldblue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image071.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image067.png)
  
 如果提示fatal: bad color value &#39;boldblue&#39; for variable &#39;--pretty format&#39; ，则&#39;boldblue&#39;改成blue
 
