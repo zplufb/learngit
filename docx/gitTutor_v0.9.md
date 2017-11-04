@@ -161,6 +161,8 @@ git  reset –hard 含义如下：
 
 ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image019.png)
 
+## 3.3工作区和暂存区
+
 工作区（Working Directory）：就是你在电脑里能看到的目录，比如我的studygit文件夹就是一个工作区：
 
 版本库（Repository）：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库
@@ -190,22 +192,19 @@ git add 那两个文件，用git status查看如下：
 
 ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image023.png)
 
-
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image024.png)
-
 我们执行git commit 一次性提交暂存区（stage）的所有修改到分支。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image025.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image024.png)
 
 
 一旦提交后，如果你对工作区文件不做任何修改，此时工作区就是&quot;干净&quot;的。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image026.jpg)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image025.jpg)
 
 
 版本库就变成如下：
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image027.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image026.png)
 
 
 ## 3.4管理和撤销修改
@@ -220,7 +219,7 @@ git add 那两个文件，用git status查看如下：
 
 当你修改工作区的readme.txt，并且git add，但是还没有commit。那就用git reset HEAD readme.txt。 可以把暂存区的修改撤销掉（unstage）,重新放回工作区。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image029.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image023.png)
 
 
 小结：
@@ -237,15 +236,15 @@ git add 那两个文件，用git status查看如下：
 
 我们新添加一个test.txt文件并提交
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image027.png)
 
 用rm  test.txt 删除文件后，Git 知道用户删除了文件，因此，工作区和版本库不一致了。用git status 看下
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image031.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image028.png)
 
 若要从版本库中删除文件，需要用git rm删掉文件，再提交。这样工作区和版本库就一致了。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image032.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image029.png)
 
 若刚才的git rm是删错了文件，版本库还有该文件。可以用git checkout -- &lt;file&gt; 撤销刚才的删除操作。
 
@@ -257,30 +256,30 @@ git checkout -- &lt;file&gt;其实是用版本库里的版本替换工作区的�
 
 $ ssh-keygen -t  rsa  -C   [youremail@example.com](mailto:youremail@example.com)  生成密钥对。用户主目录下会生成.ssh文件夹。里面id\_rsa是私钥，id\_rsa.pub是公钥，这个要告诉服务器。例如：GitHub网站，在个人设置里添加ssh key
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image033.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image030.png)
 ## 4.1添加远程仓库
 
 这里是以GitHub作为例子。在GitHub新建一个空的仓库，如下
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image034.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image031.png)
 
 新建好了，如下：
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image035.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image032.png)
 
 根据提示，用git remote add origin [git@github.com:zlufb/studygit.git](mailto:git@github.com:zlufb/studygit.git) 关联远程仓库。
 
 然后再git push –u origin master命令，首次push时，待参数-u(意思是set-upstream for git pull/status)，后面push就不需要了。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image036.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image033.png)
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image037.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image034.png)
 
 ## 4.2从远程仓库克隆
 
 假定，我要clone 远程仓库。 [那么用](mailto:%E9%82%A3%E4%B9%88%E7%94%A8git@github.com:yourname/your_project.git) [git@github.com:yourname/your\_project.git](mailto:%E9%82%A3%E4%B9%88%E7%94%A8git@github.com:yourname/your_project.git) (ssh协议)
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image038.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image035.png)
 
 这样就在你当前目录下，clone了远程仓库。
 
@@ -323,7 +322,7 @@ git checkout –b dev
 git branch dev
 
 git checkout dev
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image039.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image036.png)
 
 
 我们在dev分支上修改readme.txt文件，添加内容如下：
@@ -332,21 +331,21 @@ Creating a new branch is quick.
 
      我们git add,git commit。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image040.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image037.png)
 
 此时查看readme.txt
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image041.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image038.png)
 
 切换到master主分支上。在查看readme.txt如下：
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image042.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image039.png)
 发现readme.txt并没有变化。
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image043.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image040.png)
 
 那合并dev到master上。用git merge dev
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image044.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image041.png)
 
 此时master主分支上readme就和dev一致了。
 
@@ -354,7 +353,7 @@ Creating a new branch is quick.
 
 Git branch –d dev
 
-![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image045.png)
+![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image042.png)
 
 ## 5.2冲突处理
 
