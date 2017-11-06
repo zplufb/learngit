@@ -196,6 +196,9 @@ git add 那两个文件，用git status查看如下：
 
 ![img](https://github.com/zplufb/learngit/blob/dev/docx/images/image024.png)
 
+p
+r
+
 
 一旦提交后，如果你对工作区文件不做任何修改，此时工作区就是&quot;干净&quot;的。
 
@@ -477,7 +480,7 @@ Git stash 命令就是可以保存你现在的工作空间。
 
 7. git push origin &lt;tagname&gt; //tagname推送到远程仓库上。
 
-8. git push origin –tags      //本地未推送的tags推送到远程仓库上
+8. git push origin -–tags      //本地未推送的tags推送到远程仓库上
 
 9. git push origin :refs/tags/tagname //删除远程仓库的某个tag
 
