@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>xAxB Game:Guess a four number v0.1</title>
+	<link rel="author" href="fanbi.pw">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+
+	#main{
+		width: 50%;
+	}
+
+	tr>th{
+		width: 30%;
+		text-align:left;
+	}
+
+	.button {
+	    border: 0;
+	    border-radius: 4px;
+	    outline: 0;
+	    cursor: pointer;
+	    padding: 7px 10px;
+
+	}
+
+	.button.primary {
+	    color: #FFF;
+	    background: #5f90b0;
+	}
+
+	.button.danger {
+    color: #FFF;
+    background: #e6623c;
+	}
+
+	</style>
+	<script type="text/javascript">
+		
+		$().ready(function(){
+			
+
+
+			function generator(){
+				var ret="";
+				//var numList=[1,2,3,4,5,6,7,8,9,0];
+				var numList =[];
+				while(numList.length < 4){
+					var num = Math.floor(Math.random()*10);
+					if(!(isEleInArr(num, numList))){
+						ret+=num;
+						numList.push(num);
+					}
+				}
+				return ret;
+			}
+
+			function judge(guessNum){
+
+				var showContent = "";
+				var guessNumStr = guessNum.toString();
+				var answerNumArr = answerNum.split("");
+				//A denotes num and place both are right, Bdenotes num is right and place is wrong
+				var countA = countB = 0;
+
+				for(var i = 0; i < guessNumStr.length; i++){
+					if(isEleInArr(guessNumStr[i], answerNumArr)){
+							countB ++;
+						if(guessNumStr[i] == answerNumArr[i]){
+							countA ++ ;
+						}
+					}
+				}
+
+				countB -= countA;
+
+				showContent = countA+"A"+countB+"B";
+				console.log("showContent="+showContent);
+
+				return showContent;
+			}
+
+			function isEleInArr(ele, arr){
+
+				for (var i = arr.length - 1; i >= 0; i--) {
+					if(arr[i] == ele)
+						return true;
+					}
+			
+				return false;
+			}
+
+			
+			$("#restart").click(function(){
+				$("#input").html();
+				$("#tip").html("");
+				$(".item").remove();
+				clickGuessCount = 0;
+	 			answerNum = generator();
+			});
+
+			$("#seeAnswer").click(function(){
+				//alert("please see in console")
+				$("#tip").html("<span style='color:orange'>answer Number is "+answerNum+"</span>");
+				tipDisapper();
+				//console.log("answerNum="+answerNum);
+			});
+
+
+			$("#guess").click(function(){
+				
+				clickGuessCount ++;
+				var guessNum = $('#input').val().replace(/\s/g, "").substring(0, 4);
+				if(!(/\d{4}/.test(guessNum))){
+					$("#tip").html("<span style='color:red'> "+guessNum+" is illege, Please input only four digit number</span>");
+					tipDisapper();
+					return false;
+				}
+				var show = judge(guessNum);
+				item = "<tr class ='item'><td>" +clickGuessCount+ "</td><td>" + guessNum + " </td><td>" + show+"</td></tr>";
+				
+				$('table tr:last').after(item);
+				console.log("guessNum=" + guessNum + " ret=" + show);
+				
+				if(show == "4A0B"){
+					$("#tip").html("<span style='color:green'>Congralution, You win!</span>");
+					tipDisapper();
+					//alert("You guess correct!")
+				}
+			})
+
+			$("#input").keypress(function(){
+				if(event.keyCode == 13) {
+					$("#guess").trigger('click');
+					$(this).blur()
+					return false;
+				}
+			})
+
+			function tipDisapper(){
+				//let #tip show
+				$("#tip").show();
+				setTimeout(function(){
+					$("#tip").hide('slow');
+					//$("#tip").html("");
+					
+				},3000)
+			}
+
+			//init
+			var answerNum = "";
+			$("#restart").trigger('click');
+			var clickGuessCount = 0;
+			
+			
+		})
+	</script>
+</head>
+<body>
+	<div id="main">
+	<div>
+		<h4>Rules: the answer is a permutation of 4 numbers without repeating, guessing 4 different numbers, if the number and location are the same to mark A, if the number is the same, but the location is different, then B, start your challenge!			
+		</h4>
+	</div>
+<div>
+	<input id="input" placeholder="Please input 4 different number" onkeypress=""/>
+	<button id="guess" class="button primary" onlick="javascript:guess();">guess</button>
+	<button id="restart" class="button danger">restart</button>
+	<button id="seeAnswer" class="button danger">see Answer</button>
+</div>
+<div id="tipDiv" style="height:20px">
+	<div id="tip"></div>
+</div>
+<div id="showGuessList">
+	<table border="1px soild grey">
+		<tr id="tableHeader">
+			<th>#</th>
+			<th>Guess Number</th>
+			<th>Result</th>
+		</tr>
+		
+	</table>
+</div>
+</div>
+</body>
+</html>
