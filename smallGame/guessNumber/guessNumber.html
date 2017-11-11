@@ -66,14 +66,13 @@
 
 				for(var i = 0; i < guessNumStr.length; i++){
 					if(isEleInArr(guessNumStr[i], answerNumArr)){
-							countB ++;
 						if(guessNumStr[i] == answerNumArr[i]){
-							countA ++ ;
+							countA ++;
+						}else{
+							countB ++;
 						}
 					}
 				}
-
-				countB -= countA;
 
 				showContent = countA+"A"+countB+"B";
 				console.log("showContent="+showContent);
