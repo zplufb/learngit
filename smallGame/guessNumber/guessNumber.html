@@ -44,14 +44,14 @@
 
 			function generator(){
 				var ret="";
-				//var numList=[1,2,3,4,5,6,7,8,9,0];
-				var numList =[];
-				while(numList.length < 4){
-					var num = Math.floor(Math.random()*10);
-					if(!(isEleInArr(num, numList))){
-						ret+=num;
-						numList.push(num);
-					}
+				var numList=[1,2,3,4,5,6,7,8,9,0];
+				//var numList =[];
+				while(numList.length > 6){
+					var num = Math.floor(Math.random()*numList.length);
+				//	if(!(isEleInArr(num, numList))){
+						ret+=numList[num];
+						numList.splice(num,1);
+					//}
 				}
 				return ret;
 			}
