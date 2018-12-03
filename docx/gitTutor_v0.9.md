@@ -476,7 +476,7 @@ Git stash 命令就是可以保存你现在的工作空间。
 
 5. git tag –a &lt;tagname&gt; -m &quot;说明&quot; &lt;commit\_id&gt; //-a指定标签
 
-6. git tag –d &lt;tagname&gt;
+6. git tag –d &lt;tagname&gt;    // 删除标签
 
 7. git push origin &lt;tagname&gt; //tagname推送到远程仓库上。
 
