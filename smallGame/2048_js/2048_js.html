@@ -3,30 +3,13 @@
 	<head>
 		<meta chatset="utf-8">
 		<title>Unionline's JS 2048 V0.1</title>
-		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<link rel="stylesheet" href="./public/libs/normalize.css">
+		<link rel="stylesheet" href="./public/2048.css">
+		<script src="./public/libs/jquery.min.js"></script>
 		<style>
+			
 
-			td {
-				border: 1px solid #777;
-			}
-
-
-			#content {
-				border: 0.5px solid rgb(169, 169, 169);
-				float: left;
-			}
-
-			#left {
-				background-color: #94C6DD;
-
-				float: left;
-
-			}
-
-
-			.cube_data {
-				text-align: center;
-			}
+			
 		</style>
 		<script>
 			$(document).ready(function() {
@@ -208,21 +191,21 @@
 			let AllCubeDataArr = [];
 			let AllCubeDataArrRotate = [];
 			let blankArr = [];
-			let score =0;
+			let score = 0;
 
 			//init
 			function init() {
 				//init var			
 				drawMainUI();
 				showScore();
-				
+
 			}
-			
-			function initData(){
-				score =0;
+
+			function initData() {
+				score = 0;
 				resetTableData();
 				InitAllCubeDataArr();
-				
+
 			}
 
 			function resetTableData() {
@@ -236,23 +219,33 @@
 				loopGame();
 
 			}
-			
+
 
 			function loopGame() {
 				let num = getRandNumInit();
-				
+
 				drawCandidateUI(num);
+
+			}
+
+			function gameover() {
+
+
+				alert("game over！your score is 	" + score);
+				return;
 
 			}
 
 			function drawCandidateUI(num) {
 				let blankArr = getBlankArr();
 				let len_blankArr = blankArr.length;
-				if (len_blankArr == 0) {
-					alert("game over！your score is 	"+score);
+				
+				if(len_blankArr == 0){
+					gameover();
 					return;
 				}
-				
+
+
 				let pos_index = getRandNum(len_blankArr);
 				drawSpecialGridUI(num, blankArr[pos_index]);
 
@@ -260,7 +253,7 @@
 
 			function drawSpecialGridUI(num, pos_randNum) {
 
-				
+
 				let i = parseInt(pos_randNum / col);
 				let j = pos_randNum % col;
 				AllCubeDataArr[i][j] = num;
@@ -270,15 +263,15 @@
 			}
 
 			function drawRefreshUI() {
-	
-				
+
+
 				for (var j = 0; j < row; j++) {
 					for (var i = 0; i < col; i++) {
 						if (AllCubeDataArr[i][j] > 0) {
-							let data = "<span class='cube_data'>" + AllCubeDataArr[i][j] + "</span>"
+							let data = "<span class='number-cell'>" + AllCubeDataArr[i][j] + "</span>"
 							$("#mtd_" + (i * width + j)).html(data);
 						} else {
-							let data = "<span class='cube_data'></span>";
+							let data = "<span class='number-cell'></span>";
 							$("#mtd_" + (i * width + j)).html(data);
 
 						}
@@ -286,19 +279,19 @@
 
 				}
 				showScore();
-				
+
 			}
 
 			function drawMainUI() {
 
 				//reset div
-				$("#left").html("");
-				var table = $("<table>").appendTo($("#left"));
+				$("#grid-container").html("");
+				var table = $("<table>").appendTo($("#grid-container"));
 				for (var i = 0; i < col; i++) {
 					var rowData = $("<tr>").appendTo(table);
 					for (var j = 0; j < row; j++) {
 						//row.append("<td>null</td>");
-						$("<td id=mtd_" + (i * width + j) + " style='width:100px;height:100px'></td>").appendTo(rowData);
+						$("<td id=mtd_" + (i * width + j) + " class='grid-cell' style='width:100px;height:100px'></td>").appendTo(rowData);
 
 					}
 
@@ -346,7 +339,7 @@
 			}
 
 			function printAllCubeDataArr() {
-				
+
 
 				var content = "";
 				for (var j = 0; j < row; j++) {
@@ -358,9 +351,9 @@
 				}
 
 			}
-			
-			
-			function printAllCubeDataArrRotate(){
+
+
+			function printAllCubeDataArrRotate() {
 				var content = "";
 				for (var j = 0; j < row; j++) {
 					for (var i = 0; i < col; i++) {
@@ -370,26 +363,21 @@
 					content = "";
 				}
 			}
-			
-		
-			function showScore(){
-				
-				$("#scoreZone").text(score);
+
+
+			function showScore() {
+
+				$("#score").text(score);
 			}
-			
 		</script>
 	</head>
 	<body>
-		<h3>Game:2048</h3>
-		<button id="start" onclick="newGame()">开始游戏</button>
-		<div style="clear:both"></div>
-		<div id="content">
-			<div id="main">
-				<div style="float:left">Score:</div>
-				<div id="scoreZone"></div>
-				<div id="left">
-
-				</div>
+		<header>
+		    <h1>2048</h1>
+		    <a href="javascript:void(0);" id="newGame" onclick="newGame()">New Game</a>
+		    <p>score: <span id="score">0</span></p>
+		</header>
+		<div id="grid-container">
 			</div>
 		</div>
 	</body>
