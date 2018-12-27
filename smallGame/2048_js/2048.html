@@ -116,7 +116,7 @@
 				if(len_blankArr > 0){
 					setTimeout(() => {
 						loopGame();
-					}, 1000);
+					}, 100);
 				}else if (len_blankArr == 0) {
 					if (checkGameOver()) {
 						gameOver();									
@@ -287,6 +287,7 @@
 			}
 
 			function newGame() {
+				init();
 				initData();
 				//初始化两个随机位置
 				loopGame();
