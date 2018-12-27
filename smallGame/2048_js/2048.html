@@ -343,8 +343,10 @@
 				let i = parseInt(pos_randNum / col);
 				let j = pos_randNum % col;
 				AllCubeDataArr[i][j] = num;
-
 				drawRefreshUI();
+				//add show animation	
+				$("#mtd_" + (i * width + j)).css({'transition':'.9s ease all 0s','opacity':'1'});
+			
 
 			}
 
