@@ -8,7 +8,7 @@
 		<script src="./public/libs/jquery.min.js"></script>
 		<style>
 
-
+	
 
 		</style>
 		<script>
@@ -430,6 +430,14 @@
 
 				$("#score").text(score);
 			}
+			
+			function changeStyle(){
+				let val = $("#changeStyle").val();
+				console.log(val);
+				$("table td.grid-cell").css("border-style",val);
+				
+				
+			}
 		</script>
 	</head>
 	<body>
@@ -437,6 +445,17 @@
 			<h1>2048</h1>
 			<a href="javascript:void(0);" id="newGame" onclick="newGame()">New Game</a>
 			<p>score: <span id="score">0</span></p>
+			<p>change border style:  
+			<select id="changeStyle" onclick="changeStyle()">
+				<option value="dashed">dashed</option>
+				<option value="dotted">dotted</option>
+				<option value="double">double</option>
+				<option value="groove">groove</option>				
+				<option value="ridge">ridge</option>
+				<option value="solid" selected>defalut</option>
+
+			</select>
+			</p>
 		</header>
 		<div id="grid-container">
 		</div>
