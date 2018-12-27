@@ -7,14 +7,72 @@
 		<link rel="stylesheet" href="./public/2048.css">
 		<script src="./public/libs/jquery.min.js"></script>
 		<style>
-			
 
-			
+
+
 		</style>
 		<script>
 			$(document).ready(function() {
 				init();
 			});
+			
+			function getNumberBackgroundColor(number) {
+			    switch (number) {
+			        case 2:
+			            return "#eee4da";
+			            break;
+			        case 4:
+			            return "#ede0c8";
+			            break;
+			        case 8:
+			            return "#f2b179";
+			            break;
+			        case 16:
+			            return "#f59563";
+			            break;
+			        case 32:
+			            return "#f67c5f";
+			            break;
+			        case 64:
+			            return "#f65e3b";
+			            break;
+			        case 128:
+			            return "#edcf72";
+			            break;
+			        case 256:
+			            return "#edcc61";
+			            break;
+			        case 512:
+			            return "#9c0";
+			            break;
+			        case 1024:
+			            return "#33b5e5";
+			            break;
+			        case 2048:
+			            return "#09c";
+			            break;
+			        case 4096:
+			            return "#a6c";
+			            break;
+			        case 8192:
+			            return "#93c";
+			            break;
+			    }
+			
+			    return 'black'
+			}
+
+
+			function setNumberCellStyle(obj,num) {
+				obj.css("background-color", getNumberBackgroundColor(num));
+			}
+			
+			function clearNumberCellStyle(obj) {
+				obj.css("background-color", "#ccc0b3");
+			}
+			
+			
+
 			//document.onkeydown = keyevent;
 			document.onkeydown = function() {
 
@@ -239,8 +297,8 @@
 			function drawCandidateUI(num) {
 				let blankArr = getBlankArr();
 				let len_blankArr = blankArr.length;
-				
-				if(len_blankArr == 0){
+
+				if (len_blankArr == 0) {
 					gameover();
 					return;
 				}
@@ -268,10 +326,13 @@
 				for (var j = 0; j < row; j++) {
 					for (var i = 0; i < col; i++) {
 						if (AllCubeDataArr[i][j] > 0) {
+							let number = AllCubeDataArr[i][j];
 							let data = "<span class='number-cell'>" + AllCubeDataArr[i][j] + "</span>"
+							setNumberCellStyle($("#mtd_" + (i * width + j)),number);
 							$("#mtd_" + (i * width + j)).html(data);
 						} else {
 							let data = "<span class='number-cell'></span>";
+							clearNumberCellStyle($("#mtd_" + (i * width + j)));
 							$("#mtd_" + (i * width + j)).html(data);
 
 						}
@@ -291,7 +352,7 @@
 					var rowData = $("<tr>").appendTo(table);
 					for (var j = 0; j < row; j++) {
 						//row.append("<td>null</td>");
-						$("<td id=mtd_" + (i * width + j) + " class='grid-cell' style='width:100px;height:100px'></td>").appendTo(rowData);
+						$("<td id=mtd_" + (i * width + j) + " class='grid-cell'></td>").appendTo(rowData);
 
 					}
 
@@ -373,12 +434,12 @@
 	</head>
 	<body>
 		<header>
-		    <h1>2048</h1>
-		    <a href="javascript:void(0);" id="newGame" onclick="newGame()">New Game</a>
-		    <p>score: <span id="score">0</span></p>
+			<h1>2048</h1>
+			<a href="javascript:void(0);" id="newGame" onclick="newGame()">New Game</a>
+			<p>score: <span id="score">0</span></p>
 		</header>
 		<div id="grid-container">
-			</div>
+		</div>
 		</div>
 	</body>
 </html>
