@@ -272,6 +272,7 @@
 				//init var			
 				drawMainUI();
 				showScore();
+				changeStyle();
 
 			}
 
@@ -464,12 +465,11 @@
 			}
 
 			function changeStyle() {
-				let val = $("#changeStyle").val();
-				console.log(val);
-				$("table td.grid-cell").css("border-style", val);
-
-
+				boarderStyle = $("#changeStyle").val();
+				//console.log(val);
+				$("table td.grid-cell").css("border-style", boarderStyle);
 			}
+			
 		</script>
 	</head>
 	<body>
