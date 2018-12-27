@@ -8,70 +8,71 @@
 		<script src="./public/libs/jquery.min.js"></script>
 		<style>
 
-	
+
 
 		</style>
 		<script>
 			$(document).ready(function() {
 				init();
+				initData();
 			});
-			
+
 			function getNumberBackgroundColor(number) {
-			    switch (number) {
-			        case 2:
-			            return "#eee4da";
-			            break;
-			        case 4:
-			            return "#ede0c8";
-			            break;
-			        case 8:
-			            return "#f2b179";
-			            break;
-			        case 16:
-			            return "#f59563";
-			            break;
-			        case 32:
-			            return "#f67c5f";
-			            break;
-			        case 64:
-			            return "#f65e3b";
-			            break;
-			        case 128:
-			            return "#edcf72";
-			            break;
-			        case 256:
-			            return "#edcc61";
-			            break;
-			        case 512:
-			            return "#9c0";
-			            break;
-			        case 1024:
-			            return "#33b5e5";
-			            break;
-			        case 2048:
-			            return "#09c";
-			            break;
-			        case 4096:
-			            return "#a6c";
-			            break;
-			        case 8192:
-			            return "#93c";
-			            break;
-			    }
-			
-			    return 'black'
+				switch (number) {
+					case 2:
+						return "#eee4da";
+						break;
+					case 4:
+						return "#ede0c8";
+						break;
+					case 8:
+						return "#f2b179";
+						break;
+					case 16:
+						return "#f59563";
+						break;
+					case 32:
+						return "#f67c5f";
+						break;
+					case 64:
+						return "#f65e3b";
+						break;
+					case 128:
+						return "#edcf72";
+						break;
+					case 256:
+						return "#edcc61";
+						break;
+					case 512:
+						return "#9c0";
+						break;
+					case 1024:
+						return "#33b5e5";
+						break;
+					case 2048:
+						return "#09c";
+						break;
+					case 4096:
+						return "#a6c";
+						break;
+					case 8192:
+						return "#93c";
+						break;
+				}
+
+				return 'black'
 			}
 
 
-			function setNumberCellStyle(obj,num) {
+			function setNumberCellStyle(obj, num) {
 				obj.css("background-color", getNumberBackgroundColor(num));
 			}
-			
+
 			function clearNumberCellStyle(obj) {
 				obj.css("background-color", "#ccc0b3");
 			}
-			
-			
+
+
 
 			//document.onkeydown = keyevent;
 			document.onkeydown = function() {
@@ -106,9 +107,23 @@
 				}
 				drawRefreshUI();
 
-				setTimeout(() => {
-					loopGame();
-				}, 1000);
+       
+				
+				let blankArr = getBlankArr();
+				//let len_blankArr = blankArr.length;
+				//使用全局变量
+				//如果还有剩余空间放才能执行,否则不执行
+				if(len_blankArr > 0){
+					setTimeout(() => {
+						loopGame();
+					}, 1000);
+				}else if (len_blankArr == 0) {
+					if (checkGameOver()) {
+						gameOver();									
+					}
+					//没位置且还没结束,继续操作另外方向合并数字
+					return;
+				}
 			};
 
 
@@ -249,6 +264,7 @@
 			let AllCubeDataArr = [];
 			let AllCubeDataArrRotate = [];
 			let blankArr = [];
+			let len_blankArr = col*row;
 			let score = 0;
 
 			//init
@@ -286,27 +302,38 @@
 
 			}
 
-			function gameover() {
-
+			function gameOver() {
 
 				alert("game over！your score is 	" + score);
 				return;
+			}
 
+			function checkGameOver() {
+				//变量数组是否相邻的数字有相同的,就可以继续
+				for (var j = 0; j < row; j++) {
+					for (var i = 0; i < col-1; i++) {
+						if ((AllCubeDataArr[i][j] == AllCubeDataArr[i + 1][j])) {
+							return false;
+						}
+					}
+				}
+				
+				for (var j = 0; j < row-1; j++) {
+					for (var i = 0; i < col; i++) {
+						if (AllCubeDataArr[i][j] == AllCubeDataArr[i][j + 1]) {
+							return false;
+						}
+					}
+				}							
+
+				return true;
 			}
 
 			function drawCandidateUI(num) {
-				let blankArr = getBlankArr();
-				let len_blankArr = blankArr.length;
-
-				if (len_blankArr == 0) {
-					gameover();
-					return;
+				if(len_blankArr > 0){
+					let pos_index = getRandNum(len_blankArr);
+					drawSpecialGridUI(num, blankArr[pos_index]);
 				}
-
-
-				let pos_index = getRandNum(len_blankArr);
-				drawSpecialGridUI(num, blankArr[pos_index]);
-
 			}
 
 			function drawSpecialGridUI(num, pos_randNum) {
@@ -328,7 +355,7 @@
 						if (AllCubeDataArr[i][j] > 0) {
 							let number = AllCubeDataArr[i][j];
 							let data = "<span class='number-cell'>" + AllCubeDataArr[i][j] + "</span>"
-							setNumberCellStyle($("#mtd_" + (i * width + j)),number);
+							setNumberCellStyle($("#mtd_" + (i * width + j)), number);
 							$("#mtd_" + (i * width + j)).html(data);
 						} else {
 							let data = "<span class='number-cell'></span>";
@@ -369,7 +396,7 @@
 
 			function getBlankArr() {
 
-				var blankArr = [];
+				blankArr = [];
 				for (var j = 0; j < row; j++) {
 					for (var i = 0; i < col; i++) {
 						if (AllCubeDataArr[j][i] == 0) {
@@ -378,6 +405,7 @@
 					}
 
 				}
+				len_blankArr = blankArr.length;
 				console.log("blankArr", blankArr);
 				return blankArr;
 			}
@@ -393,6 +421,7 @@
 					for (var i = width - 1; i >= 0; i--) {
 						AllCubeDataArr[j][i] = 0;
 						AllCubeDataArrRotate[j][i] = 0;
+						blankArr[i*col+j] = i*col+j;
 					}
 
 				}
@@ -430,13 +459,13 @@
 
 				$("#score").text(score);
 			}
-			
-			function changeStyle(){
+
+			function changeStyle() {
 				let val = $("#changeStyle").val();
 				console.log(val);
-				$("table td.grid-cell").css("border-style",val);
-				
-				
+				$("table td.grid-cell").css("border-style", val);
+
+
 			}
 		</script>
 	</head>
@@ -445,16 +474,16 @@
 			<h1>2048</h1>
 			<a href="javascript:void(0);" id="newGame" onclick="newGame()">New Game</a>
 			<p>score: <span id="score">0</span></p>
-			<p>change border style:  
-			<select id="changeStyle" onclick="changeStyle()">
-				<option value="dashed">dashed</option>
-				<option value="dotted">dotted</option>
-				<option value="double">double</option>
-				<option value="groove">groove</option>				
-				<option value="ridge">ridge</option>
-				<option value="solid" selected>defalut</option>
+			<p>change border style:
+				<select id="changeStyle" onclick="changeStyle()">
+					<option value="dashed">dashed</option>
+					<option value="dotted">dotted</option>
+					<option value="double">double</option>
+					<option value="groove">groove</option>
+					<option value="ridge">ridge</option>
+					<option value="solid" selected>defalut</option>
 
-			</select>
+				</select>
 			</p>
 		</header>
 		<div id="grid-container">
