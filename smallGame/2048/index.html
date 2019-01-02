@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<title>Unionline's JS 2048 V0.9</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta charset="utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Type" content="text/html">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no" name="format-detection">
+		<!-- UC默认竖屏 ，UC强制全屏 -->
+		<meta name="full-screen" content="yes">
+		<meta name="browsermode" content="application">
+		<!-- QQ强制竖屏 QQ强制全屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="x5-page-mode" content="app">
+		<meta name="format-detection" content="email=no" />
+		<meta name="msapplication-tap-highlight" content="no">
+		<link rel="stylesheet" href="./public/libs/normalize.css">
+		<link rel="stylesheet" href="./public/2048.css">
+		<!-- <script src="./public/libs/jquery.min.js"></script> -->
+		<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+		<script src="public/main.js"></script>
+		<style>
+		</style>
+		<script>
+
+		</script>
+	</head>
+	<body>
+		<div>
+			<a href="../../index.html">返回首页</a>
+		</div>
+		<header>
+			<h1>2048</h1>
+			<a href="javascript:void(0);" id="newGame" onclick="newGame()">New Game</a>
+			<p>score: <span id="score">0</span></p>
+			<p>style:
+				<select id="changeStyle" onclick="changeStyle()">
+					<option value="dashed">dashed</option>
+					<option value="dotted">dotted</option>
+					<option value="double" selected>double</option>
+					<option value="groove">groove</option>
+					<option value="ridge">ridge</option>
+					<option value="solid">defalut</option>
+
+				</select>
+			</p>
+	<!-- 		<p>level:
+				<select id="changeLevel" onclick="changeLevel()">
+					<option value="3">3x3</option>
+					<option value="4" selected>4x4</option>
+					<option value="5">5x5</option>
+					<option value="6">6x6</option>
+					<option value="7">7x7</option>
+					<option value="8">8x8</option>
+			
+				</select>
+			</p> -->
+		</header>
+		<div id="grid-container">
+		</div>
+		</div>
+	</body>
+</html>
